@@ -1,0 +1,53 @@
+=== SMOKE 1: small params, metronome (chains=5 tokens=30 interval=2) ===
+repro: baseUrl=http://127.0.0.1:38699/v1 cores=4 chains=5 delivery=metronome tokensPerCall=30 tokenIntervalMs=2 expectedPerChain: modelCalls=10 toolExecutions=9
+=== repro results ===
+chains=5 completed=5 errors=0 wall=3.20s
+chain seconds: mean=3.12 p50=3.12 p95=3.20 min=2.96 max=3.20
+effective tok/s per chain: 96.07 (nominal generation rate 500)
+tool invocations (global counter): 45 (expected 45)
+count assertion: PASS (every chain must show exactly 10 model calls / 9 tool executions)
+
+=== SMOKE 2: small params, batch100 (chains=5 tokens=30 interval=2) ===
+repro: baseUrl=http://127.0.0.1:43067/v1 cores=4 chains=5 delivery=batch100 tokensPerCall=30 tokenIntervalMs=2 expectedPerChain: modelCalls=10 toolExecutions=9
+=== repro results ===
+chains=5 completed=5 errors=0 wall=3.14s
+chain seconds: mean=3.02 p50=3.04 p95=3.14 min=2.78 max=3.14
+effective tok/s per chain: 99.30 (nominal generation rate 500)
+tool invocations (global counter): 45 (expected 45)
+count assertion: PASS (every chain must show exactly 10 model calls / 9 tool executions)
+
+=== SMOKE 3: STANDARD params, metronome (chains=5 tokens=300 interval=20) ===
+repro: baseUrl=http://127.0.0.1:34343/v1 cores=4 chains=5 delivery=metronome tokensPerCall=300 tokenIntervalMs=20 expectedPerChain: modelCalls=10 toolExecutions=9
+=== repro results ===
+chains=5 completed=5 errors=0 wall=61.29s
+chain seconds: mean=61.18 p50=61.24 p95=61.29 min=60.88 max=61.29
+effective tok/s per chain: 49.04 (nominal generation rate 50)
+tool invocations (global counter): 45 (expected 45)
+count assertion: PASS (every chain must show exactly 10 model calls / 9 tool executions)
+
+=== SMOKE 4: STANDARD params, batch100 (chains=5 tokens=300 interval=20) ===
+repro: baseUrl=http://127.0.0.1:41329/v1 cores=4 chains=5 delivery=batch100 tokensPerCall=300 tokenIntervalMs=20 expectedPerChain: modelCalls=10 toolExecutions=9
+=== repro results ===
+chains=5 completed=5 errors=0 wall=61.20s
+chain seconds: mean=61.08 p50=61.15 p95=61.20 min=60.76 max=61.20
+effective tok/s per chain: 49.12 (nominal generation rate 50)
+tool invocations (global counter): 45 (expected 45)
+count assertion: PASS (every chain must show exactly 10 model calls / 9 tool executions)
+
+=== SMOKE 5: STANDARD params, batch100, chains=500 (phenomenon check) ===
+repro: baseUrl=http://127.0.0.1:44469/v1 cores=4 chains=500 delivery=batch100 tokensPerCall=300 tokenIntervalMs=20 expectedPerChain: modelCalls=10 toolExecutions=9
+=== repro results ===
+chains=500 completed=500 errors=0 wall=88.12s
+chain seconds: mean=83.27 p50=83.00 p95=86.37 min=79.12 max=87.50
+effective tok/s per chain: 36.03 (nominal generation rate 50)
+tool invocations (global counter): 4500 (expected 4500)
+count assertion: PASS (every chain must show exactly 10 model calls / 9 tool executions)
+
+=== SMOKE 6: STANDARD params, metronome, chains=500 (phenomenon check) ===
+repro: baseUrl=http://127.0.0.1:33073/v1 cores=4 chains=500 delivery=metronome tokensPerCall=300 tokenIntervalMs=20 expectedPerChain: modelCalls=10 toolExecutions=9
+=== repro results ===
+chains=500 completed=500 errors=0 wall=85.96s
+chain seconds: mean=79.62 p50=79.59 p95=82.50 min=75.71 max=85.09
+effective tok/s per chain: 37.68 (nominal generation rate 50)
+tool invocations (global counter): 4500 (expected 4500)
+count assertion: PASS (every chain must show exactly 10 model calls / 9 tool executions)
